@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import HistoryAlpine from "./components/History/history";
 import Home from "./components/home/home";
@@ -21,7 +21,6 @@ import ParticulierDetails from "./components/PageCollectedonnées/Particulierdet
 
 const App = () => {
   const [key, setKey] = useState(0);
-
   return (
     <Router>
       <Routes>
@@ -41,11 +40,11 @@ const App = () => {
           path="/Confidentialite"
           element={<GDPRPrivacyStatement key={key} />}
         />
-        <Route path="/Events" element={<EventPage />} />
-        <Route path="/Loc_part" element={<RegistrationForm />} />
-        <Route path="/Loc_pro" element={<RegistrationFormEntreprise />} />
-        <Route path="/Loc_Contact" element={<ParticuliersList />} />
-        <Route path="/Contact_pro" element={<ProfessionnelsList />} />
+        <Route path="/Events" element={<EventPage />}></Route>
+        <Route path="/Loc_part" element={<RegistrationForm />}></Route>
+        <Route path="/Loc_pro" element={<RegistrationFormEntreprise />}></Route>
+        <Route path="/Loc_Contact" element={<ParticuliersList />}></Route>
+        <Route path="/Contact_pro" element={<ProfessionnelsList />}></Route>
         <Route path="/professionnels" element={<ProfessionnelsList />} />
         <Route path="/professionnel/:id" element={<ProfessionnelDetails />} />
         <Route path="/particuliers/:id" element={<ParticulierDetails />} />
