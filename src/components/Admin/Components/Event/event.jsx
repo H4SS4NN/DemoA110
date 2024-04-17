@@ -1,5 +1,8 @@
 import React from "react";
 import { Container, Row, Col, Card, Button, Navbar } from "react-bootstrap";
+
+import { BsGear } from "react-icons/bs";
+
 import {
   BsGeoAlt,
   BsCalendar,
