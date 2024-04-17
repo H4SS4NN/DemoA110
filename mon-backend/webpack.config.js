@@ -8,15 +8,17 @@ module.exports = {
     filename: "server.js",
     publicPath: "/",
   },
-  rules: [
-    {
-      test: /\.html$/,
-      use: ['html-loader']
-    },
-    {
-      test: /\.cs$/,
-      use: 'raw-loader'
-    }
-  ]
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        use: ["html-loader"],
+      },
+      {
+        test: /\.cs$/,
+        use: "raw-loader",
+      },
+    ],
+  },
   target: "node",
 };

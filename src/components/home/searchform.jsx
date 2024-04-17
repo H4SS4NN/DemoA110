@@ -118,10 +118,10 @@ const SearchForm = () => {
                   </h2>
                 </Form.Label>
 
-                <h2>
+                <p>
                   <i class="bi bi-geo"> </i>
                   {returnLocation}{" "}
-                </h2>
+                </p>
               </Form.Group>
             </Col>
 
@@ -167,10 +167,10 @@ const SearchForm = () => {
                   </h2>
                 </Form.Label>
 
-                <h2>
+                <p className="">
                   {" "}
                   <i class="bi bi-geo"> </i> {returnLocation}{" "}
-                </h2>
+                </p>
               </Form.Group>
             </Col>
 
