@@ -1,0 +1,9 @@
+/* MyNavbar.css */
+.nav-link {
+  transition: border-bottom 0.3s ease-in-out;
+}
+
+.activeNavLink {
+  border-bottom: 4px solid white;
+  padding-bottom: 2px; /* ajustez la valeur pour que le texte ne soit pas trop près de la bordure */
+}

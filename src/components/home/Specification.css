@@ -1,0 +1,63 @@
+.specification-container {
+  width: 100%;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.spec-title {
+  margin-bottom: 20px;
+}
+.spec-details {
+  width: 70%;
+}
+.spec-tabs {
+  display: flex;
+  width: 70%;
+
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+.spec-tab-button {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  padding: 10px 0;
+}
+.spec-tab .spec .spec-tab-button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-bottom: 3px solid transparent;
+}
+.spec-tab-button:hover {
+  background-color: #f1f1f1;
+}
+.spec-tabs h2 {
+  margin-bottom: 25px;
+  font-size: 20px;
+  color: black;
+}
+.spec-detail-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+
+  font-weight: 300;
+  color: black;
+}
+.spec-detail-value {
+  margin-bottom: 20px;
+  font-size: 20px;
+
+  font-weight: medium;
+  color: #555658;
+}
+.spec-tab-button:hover,
+.spec-tab-button.active {
+  border-bottom: 2px solid black;
+  border-radius: 0px;
+}
