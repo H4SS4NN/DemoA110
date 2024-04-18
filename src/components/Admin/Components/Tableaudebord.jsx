@@ -18,6 +18,7 @@ import {
 } from "react-bootstrap";
 import EditReservationModal from "./EditModal";
 import ConfirmationModal from "./confirmationModal";
+import config from "../../../config";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const Dashboard = () => {
     setShowConfirmationModal(true);
   };
 
-  const adressAPI = "http://localhost:3000";
+  const adressAPI = config.API_URL;
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -50,7 +51,11 @@ const Dashboard = () => {
 
   const fetchReservations = () => {
     axios
-      .get(adressAPI + "/reservations")
+      .get(`${config.API_URL}reservations`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setReservations(response.data);
       })
@@ -68,7 +73,7 @@ const Dashboard = () => {
   const confirmAction = async (id, commentaire, objet, nouvelEtat) => {
     try {
       const response = await axios.post(
-        adressAPI + "/reservations/update",
+        `${config.API_URL}reservations/update`,
         {
           id,
           commentaire,

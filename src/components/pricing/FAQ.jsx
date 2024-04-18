@@ -17,7 +17,9 @@ const FAQPage = () => {
           <Accordion.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Quelles sont les conditions d'âge pour louer une Alpine A110 ?
+                <b>
+                  Quelles sont les conditions d'âge pour louer une Alpine A110 ?
+                </b>
               </h5>
               <p>
                 Vous devez être âgé(e) de 27 ans et être titulaire d'un permis
@@ -26,8 +28,11 @@ const FAQPage = () => {
             </Card.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Est-il nécessaire de laisser une caution pour la location de
-                l'Alpine A110 ?
+                <b>
+                  {" "}
+                  Est-il nécessaire de laisser une caution pour la location de
+                  l'Alpine A110 ?
+                </b>
               </h5>
               <p>
                 Oui, un dépôt de garantie de 3.000 € sera exigé et sera restitué
@@ -37,7 +42,7 @@ const FAQPage = () => {
             </Card.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Puis-je conduire l'Alpine A110 à l'étranger ?
+                <b>Puis-je conduire l'Alpine A110 à l'étranger ?</b>
               </h5>
               <p>
                 La circulation dans les pays étrangers nécessite une validation
@@ -46,19 +51,22 @@ const FAQPage = () => {
             </Card.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Quels sont les documents nécessaires pour louer une Alpine A110
-                ?
+                <b>
+                  {" "}
+                  Quels sont les documents nécessaires pour louer une Alpine
+                  A110 ?
+                </b>
               </h5>
               <p>
-                Particuliers : Permis de conduire en cours de validité, un
-                justificatif de domicile de moins de trois mois (facture
+                <u> Particuliers : </u> Permis de conduire en cours de validité,
+                un justificatif de domicile de moins de trois mois (facture
                 d'énergie ou de télécom), une pièce d'identité, un moyen de
                 paiement, une adresse courriel valide et un numéro de téléphone
                 mobile.
               </p>
               <p>
-                Entreprises : Permis de conduire en cours de validité, un
-                extrait Kbis de moins de trois mois, un pouvoir du mandataire
+                <u> Entreprises : </u>Permis de conduire en cours de validité,
+                un extrait Kbis de moins de trois mois, un pouvoir du mandataire
                 social accompagné d'un bon de commande et de sa copie de pièce
                 d'identité, un moyen de paiement, une adresse courriel valide et
                 un numéro de téléphone mobile.
@@ -76,7 +84,7 @@ const FAQPage = () => {
           <Accordion.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Puis-je récupérer le véhicule à l'étranger ?
+                <b> Puis-je récupérer le véhicule à l'étranger ?</b>
               </h5>
               <p>
                 La prise en charge du véhicule doit se faire à notre agence
@@ -85,7 +93,7 @@ const FAQPage = () => {
             </Card.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Où rendre le véhicule à la fin de la location ?
+                <b>Où rendre le véhicule à la fin de la location ?</b>
               </h5>
               <p>
                 Le véhicule doit être restitué à notre agence au même endroit où
@@ -104,7 +112,7 @@ const FAQPage = () => {
           <Accordion.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Quels sont les moyens de paiement acceptés ?
+                <b> Quels sont les moyens de paiement acceptés ?</b>
               </h5>
               <p>
                 Nous acceptons les espèces ainsi que les cartes de crédits
@@ -113,7 +121,7 @@ const FAQPage = () => {
             </Card.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Y a-t-il un paiement en plusieurs fois possible ?
+                <b> Y a-t-il un paiement en plusieurs fois possible ?</b>
               </h5>
               <p>
                 Non, le paiement doit être effectué en une seule fois au début
@@ -132,7 +140,7 @@ const FAQPage = () => {
           <Accordion.Body>
             <Card.Body>
               <h5 className="mb-3">
-                Comment contacter le service client en cas de problème ?
+                <b> Comment contacter le service client en cas de problème ?</b>
               </h5>
               <p>
                 Vous pouvez nous contacter par téléphone au 01 23 45 67 89 ou

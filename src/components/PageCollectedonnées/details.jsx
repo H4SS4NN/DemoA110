@@ -23,6 +23,8 @@ import {
   BsDownload,
 } from "react-icons/bs";
 
+import config from "../../config";
+
 const ProfessionnelDetails = () => {
   const { id } = useParams();
   const [professionnel, setProfessionnel] = useState({});
@@ -40,7 +42,7 @@ const ProfessionnelDetails = () => {
   const fetchProfessionnelDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/professionnels/${id}`,
+        `${config.API_URL}/professionnels/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -74,7 +76,7 @@ const ProfessionnelDetails = () => {
     });
 
     try {
-      await axios.put(`http://localhost:3000/professionnels/${id}`, formData, {
+      await axios.put(`${config.API_URL}/professionnels/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${localStorage.getItem("token")}`,

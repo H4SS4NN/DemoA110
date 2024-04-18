@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
+import config from "../../config";
 
 const ProfessionnelsList = () => {
   const [professionnels, setProfessionnels] = useState([]);
@@ -24,7 +25,7 @@ const ProfessionnelsList = () => {
 
   const fetchProfessionnels = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/professionnels", {
+      const response = await axios.get(`${config.API_URL}/professionnels`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

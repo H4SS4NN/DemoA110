@@ -5,6 +5,7 @@ import StationCard from "../Resultat_location/Resultat_station";
 import DateDisplayComponent from "../Resultat_location/Result_date";
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
+import config from "../../../config.js";
 
 const FormulaireLocation = ({ next, deliveryInfo }) => {
   console.log(deliveryInfo);
@@ -99,7 +100,7 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:3000/send", {
+      const response = await fetch(`${config.API_URL}/send`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

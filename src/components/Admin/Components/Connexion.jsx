@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Form, Button, Card } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
+import config from "../../../config";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -15,7 +16,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch(`${config.API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

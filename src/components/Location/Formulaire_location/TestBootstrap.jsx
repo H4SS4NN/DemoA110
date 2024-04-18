@@ -16,7 +16,7 @@ const car = {
   suitcases: "1 Valise",
   transmission: "automatique",
   doors: "3 Portes",
-  minAge: "25 ans",
+  minAge: "27 ans",
 };
 
 // Composants d'étape avec style Bootstrap

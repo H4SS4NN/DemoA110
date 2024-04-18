@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import config from "../../config";
 import axios from "axios";
 
 const RegistrationForm = () => {
@@ -58,7 +58,7 @@ const RegistrationForm = () => {
     });
 
     axios
-      .post("http://localhost:3000/professionnels", dataToSubmit, {
+      .post(`${config.API_URL}/professionnels`, dataToSubmit, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

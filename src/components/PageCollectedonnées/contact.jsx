@@ -13,6 +13,7 @@ import {
   Col,
 } from "react-bootstrap";
 import { jsPDF } from "jspdf";
+import config from "../../config";
 
 const ParticuliersList = () => {
   const [particuliers, setParticuliers] = useState([]);
@@ -31,7 +32,7 @@ const ParticuliersList = () => {
 
   const fetchParticuliers = () => {
     axios
-      .get("http://localhost:3000/particuliers", {
+      .get(`${config.API_URL}/particuliers`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
