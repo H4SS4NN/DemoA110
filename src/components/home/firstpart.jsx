@@ -1,6 +1,7 @@
 import BookingForm from "./searchform";
 import { useNavigate } from "react-router-dom";
 import "../home/firstpart.css";
+import imageacc from "../../assets/alpinevoyage.webp";
 
 const FirstPart = () => {
   const navigate = useNavigate();
@@ -12,31 +13,17 @@ const FirstPart = () => {
       }}
     >
       <div className="row align-items-center ">
-        <div className="col-lg-6 p-2">
+        <div className="col-lg-6 ">
           <div className=" p-5 text-left">
             {/* Navigation */}
-            <nav>
-              <ul className="nav justify-content-left mb-3">
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="#">
-                    Location
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link text-light" href="#">
-                    Alpine A110 GT Legend
-                  </a>
-                </li>
-              </ul>
-            </nav>
 
             {/* Titre */}
-            <h1 className="display-4 fw-bold my-4 ">
+            <h1 className="display-4 fw-bold my-2 ">
               LOUEZ VOTRE MOMENT DE PARTAGE, PLAISIR, PASSION !
             </h1>
 
             {/* Paragraphe */}
-            <p className="lead my-4 text-light">
+            <p className="lead my- text-light">
               Découvrez l'Alpine A110 GT Légende en location, et ressentez les
               valeurs de Partage, Plaisir et Passion. Avec son design élégant et
               sa puissance, l'Alpine A110 GT Légende vous offre une expérience
@@ -56,7 +43,7 @@ const FirstPart = () => {
               </button> */}
               <button
                 type="button"
-                className="btn btn-outline-light btn-lg px-4"
+                className="btn btn-outline-light btn-lg"
                 onClick={() => navigate("/History")}
               >
                 Voir l'histoire
@@ -66,15 +53,13 @@ const FirstPart = () => {
         </div>
 
         {/* Colonne pour l'image */}
-        <div className="col-lg-6 pt-5">
+        <div className="col-lg-6 ">
           <img
             style={{
               width: "100%",
               height: "100%",
-              borderTopLeftRadius: "50px",
-              borderBottomLeftRadius: "50px",
             }}
-            src="assets/alpinevoyage.webp"
+            src={imageacc}
             alt="Illustration Alpine A110"
           />
         </div>

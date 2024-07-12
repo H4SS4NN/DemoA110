@@ -9,6 +9,7 @@ import config from "../../../config.js";
 
 const FormulaireLocation = ({ next, deliveryInfo }) => {
   console.log(deliveryInfo);
+  const [honeypot, setHoneypot] = useState("");
   const convertirDateFRVersISO = (dateFR) => {
     const [jour, mois, annee] = dateFR.split("/");
     return `${annee}-${mois.padStart(2, "0")}-${jour.padStart(2, "0")}`;
@@ -74,6 +75,11 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (honeypot) {
+      console.log("Détection de bot, soumission ignorée.");
+      return;
+    }
     const convertDateToISO = (dateString) => {
       const [day, month, year] = dateString.split("/");
       return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
@@ -113,7 +119,7 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
       }
 
       console.log("Données envoyées avec succès au serveur");
-      alert("Votre réservation a été soumise avec succès.");
+
       setIsSubmitted(true);
 
       setTimeout(() => {
@@ -149,7 +155,6 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
         <Col lg={8}>
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1 className="h3 mb-3">Formulaire de location</h1>
-
             <Form.Group className="mb-3" controlId="formGroupName">
               <Form.Label>Nom</Form.Label>
               <Form.Control
@@ -159,7 +164,6 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
                 required
               />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formGroupFirstName">
               <Form.Label>Prénom</Form.Label>
               <Form.Control
@@ -169,7 +173,6 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
                 required
               />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formGroupEmail">
               <Form.Label>Adresse email</Form.Label>
               <Form.Control
@@ -179,7 +182,6 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
                 required
               />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formGroupPhone">
               <Form.Label>Numéro de téléphone</Form.Label>
               <Form.Control
@@ -189,7 +191,6 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
                 required
               />
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="formGroupComment">
               <Form.Label>Commentaire</Form.Label>
               <Form.Control
@@ -200,6 +201,25 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
               />
             </Form.Group>
 
+            <div style={{ display: "none" }}>
+              <Form.Control
+                type="text"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
+            {/* Case à cocher pour le consentement de la politique de confidentialité */}
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+              <Form.Check
+                type="checkbox"
+                label="J'accepte la politique de confidentialité."
+                required
+              />
+            </Form.Group>
+            <p>
+              En soumettant ce formulaire, vous acceptez que vos données soient
+              traitées conformément à notre politique de confidentialité .
+            </p>
             <Button variant="primary" type="">
               Confirmer la location
             </Button>
@@ -209,8 +229,9 @@ const FormulaireLocation = ({ next, deliveryInfo }) => {
           <div className="bg-light p-4 rounded">
             <h4>Détails de la réservation</h4>
             <DateDisplayComponent deliveryInfo={deliveryInfo} />
-            <StationCard deliveryInfo={deliveryInfo} />
             <EstimationLoc deliveryInfo={deliveryInfo} prix={prix} />
+            <StationCard deliveryInfo={deliveryInfo} />
+           
           </div>
         </Col>
       </Row>

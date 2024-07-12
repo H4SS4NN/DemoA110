@@ -13,10 +13,12 @@ import PricingPlans from "../pricing/price";
 import ResultatLocation from "../Location/Resultat_location/Result_Location";
 import RecapFinale from "../Location/Formulaire_location/Recapfinale/RecapFinale";
 import ScrollToTopButton from "../utils/ButtonTOp";
+import CookieConsentBanner from "../cookies/cookieConsent";
 
 const Home = () => {
   return (
     <>
+      <CookieConsentBanner />
       <MyNavbar />
 
       <FirstPart />

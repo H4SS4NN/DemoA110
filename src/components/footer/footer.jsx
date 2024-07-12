@@ -1,29 +1,28 @@
 import React from "react";
-import { Container, Row, Col, ListGroup } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Container, Row, Col } from "react-bootstrap";
+import { useNavigate, NavLink } from "react-router-dom";
+import logo from "../../assets/logoPhoenix78.png";
 
 const Footer = () => {
   let navigate = useNavigate();
 
-  const handleNavigation = () => {
-    navigate("/mentionLegale");
-  };
-  const handleNavigation2 = () => {
-    navigate("/Confidentialite");
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0); // Scroll to the top of the page
   };
 
   return (
-    <footer className="bg-light text-center  text-lg-start">
+    <footer className="bg-light text-center text-lg-start">
       <Container className="p-4">
-        <Row className="align-items-center ">
+        <Row className="align-items-center">
           <Col lg={4} md={6} className="mb-4">
-            <img width={50} src="assets/logophoenix78.png" alt="Logo" />
+            <img width={50} src={logo} alt="Logo" />
             <p>
               SAS PHOENIX78 <br />
               Rue François Geoffre 78180 <br />
               Montigny-le-Bretonneux <br />
-              Tél.: +33 (0)1 86 90 08 98 <br />
-              contact78@a110.club
+              <a href="tel:+33186900898">Tél.: +33 (0)1 86 90 08 98</a> <br />
+              <a href="mailto:contact78@a110.club">contact78@a110.club</a>
             </p>
             <div>
               <a href="#" className="me-2 text-reset">
@@ -41,29 +40,49 @@ const Footer = () => {
             <h5 className="text-uppercase mb-4">À propos</h5>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <a href="#!" className="text-reset">
-                  <i className="bi bi-card-list me-2"></i>Formules
-                </a>
+                <NavLink
+                  to="/Events"
+                  className="text-reset"
+                  onClick={() => handleNavigation("/Events")}
+                >
+                  <i className="bi bi-card-list me-2"></i>Evenements
+                </NavLink>
               </li>
               <li className="mb-2">
-                <a href="#!" className="text-reset">
-                  <i className="bi bi-house-door me-2"></i>Accueil
-                </a>
+                <NavLink
+                  to="/Aide"
+                  className="text-reset"
+                  onClick={() => handleNavigation("/Aide")}
+                >
+                  <i className="bi bi-question-circle-fill"></i>FAQ
+                </NavLink>
               </li>
               <li className="mb-2">
-                <a href="#!" className="text-reset">
+                <NavLink
+                  to="/History"
+                  className="text-reset"
+                  onClick={() => handleNavigation("/History")}
+                >
                   <i className="bi bi-book-half me-2"></i>Histoire
-                </a>
+                </NavLink>
               </li>
               <li className="mb-2">
-                <a onClick={handleNavigation} href="" className="text-reset">
-                  <i className=""></i>Mention legal
-                </a>
+                <NavLink
+                  to="/mentionLegale"
+                  className="text-reset"
+                  onClick={() => handleNavigation("/mentionLegale")}
+                >
+                  Mentions légales
+                </NavLink>
               </li>
               <li>
-                <a onClick={handleNavigation2} href="" className="text-reset">
-                  <i className=""></i>Confidentialites des données
-                </a>
+                <NavLink
+                  to="/Confidentialite"
+                  className="text-reset"
+                  onClick={() => handleNavigation("/Confidentialite")}
+                >
+                  Confidentialités des données
+                </NavLink>
               </li>
             </ul>
           </Col>

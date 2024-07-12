@@ -22,15 +22,18 @@ const SearchForm = () => {
 
   const { date, time, nextTime } = getFormattedCurrentDateTime();
 
+  const today = new Date().toISOString().split("T")[0]; // Date d'aujourd'hui au format YYYY-MM-DD
+
   const [departureLocation, setDepartureLocation] = useState(
     "Rue François Geoffre, 78180 Montigny-le-Bretonneux"
   );
-  const [departureDate, setDepartureDate] = useState("");
-  const [departureTime, setDepartureTime] = useState("08:00");
+
   const [returnLocation, setReturnLocation] = useState(
     "Rue François Geoffre, 78180 Montigny-le-Bretonneux"
   );
-  const [returnDate, setReturnDate] = useState("");
+  const [departureDate, setDepartureDate] = useState(today);
+  const [returnDate, setReturnDate] = useState(today);
+  const [departureTime, setDepartureTime] = useState("08:00");
   const [returnTime, setReturnTime] = useState("18:00");
   const [showResult, setShowResult] = useState(false);
   const [deliveryInfo, setDeliveryInfo] = useState(null);
@@ -58,6 +61,24 @@ const SearchForm = () => {
         month: "2-digit",
         day: "2-digit",
       });
+    };
+
+    const generateTimeOptions = () => {
+      const options = [];
+      for (let hour = 8; hour <= 18; hour++) {
+        options.push(
+          <option key={hour} value={`${hour.toString().padStart(2, "0")}:00`}>
+            {`${hour.toString().padStart(2, "0")}:00`}
+          </option>
+        );
+      }
+      return options;
+    };
+
+    const search = () => {
+      console.log(
+        "Recherche effectuée avec les détails de départ et de retour"
+      );
     };
 
     const formattedDepartureDate = formatDateForState(departureDate);
@@ -101,8 +122,6 @@ const SearchForm = () => {
     >
       <Container>
         <h1 className="h2"> Estimez votre location </h1>
-        <OfferCards />
-        <br />
 
         <Form>
           <Row className="align-items-end">
@@ -113,7 +132,7 @@ const SearchForm = () => {
                   <h2 className="h5">
                     <b>
                       {" "}
-                      <i class="bi bi-arrow-up"></i> Retrait
+                      <i class="bi bi-arrow-up"></i>Départ
                     </b>{" "}
                   </h2>
                 </Form.Label>
@@ -131,6 +150,8 @@ const SearchForm = () => {
                 <Form.Control
                   type="date"
                   value={departureDate}
+                  min={today} // La date minimale est la date d'aujourd'hui
+                  max={returnDate !== today ? returnDate : undefined}
                   onChange={(e) => setDepartureDate(e.target.value)}
                 />
               </Form.Group>
@@ -149,17 +170,11 @@ const SearchForm = () => {
             </Col>
 
             {/* Localisation de retour */}
-            <Col
-              style={{
-                borderLeft: "1px solid black",
-              }}
-              xs={12}
-              md={2}
-            >
+            <Col xs={12} md={2}>
               <Form.Group controlId="formReturnLocation">
                 <Form.Label>
                   {" "}
-                  <h2 className="h5">
+                  <h2 className="h5 pt-5">
                     <b>
                       {" "}
                       <i class="bi bi-arrow-down"></i> Retour
@@ -180,7 +195,7 @@ const SearchForm = () => {
                 <Form.Control
                   type="date"
                   value={returnDate}
-                  min={departureDate}
+                  min={departureDate} // La date minimale est la date de départ
                   onChange={(e) => setReturnDate(e.target.value)}
                 />
               </Form.Group>
@@ -201,7 +216,7 @@ const SearchForm = () => {
           <Row>
             <Col className="text-center mt-3">
               <Button className="btn " onClick={search}>
-                Search
+                Rechercher <i class="bi bi-search"></i>
               </Button>
             </Col>
           </Row>

@@ -1,44 +1,30 @@
 import React from "react";
-import { Card, Carousel } from "react-bootstrap";
+import { Card, Row, Col, Carousel, Rate, Avatar } from "antd"; // Importez les composants nécessaires d'Ant Design
 
 // Carte de commentaire individuelle
 const CommentaireCard = ({ image, nom, lieu, note, commentaire }) => (
-  <Card className="shadow-sm" style={{ width: "18rem", borderRadius: "15px" }}>
-    <Card.Body>
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <div className="d-flex align-items-center">
-          <div
-            className="profile-placeholder"
-            style={{
-              backgroundColor: "#ccc",
-              borderRadius: "50%",
-              width: "50px",
-              height: "50px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              overflow: "hidden",
-            }}
-          >
-            <i class="bi bi-person-fill"></i>
-          </div>
-          <div className="ms-3">
-            <h5 className="mb-0">{nom}</h5>
-            <p className="mb-0 text-muted">{lieu}</p>
-          </div>
-        </div>
-        <div className="note" style={{ fontSize: "1.5rem" }}>
-          {note}
-        </div>
-      </div>
-      <Card.Text>{commentaire}</Card.Text>
-    </Card.Body>
+  <Card className="shadow-sm mb-4" style={{ borderRadius: "15px" }}>
+    <Card.Meta
+      avatar={
+        image ? (
+          <Avatar src={image} size={50} />
+        ) : (
+          <Avatar icon={<i className="bi bi-person-fill"></i>} size={50} />
+        )
+      }
+      title={nom}
+      description={lieu}
+    />
+    <div className="d-flex justify-content-between align-items-center mb-3">
+      <Rate disabled defaultValue={note} />
+    </div>
+    <div>{commentaire}</div>
   </Card>
 );
 
 // Composant de carousel qui affiche les cartes de commentaires
 const CommentairesCarousel = ({ commentaires }) => {
-  // Groupez les commentaires par 3 pour le carousel
+  // Groupez les commentaires par 3 pour le carousel sur desktop
   const groupeCommentaires = commentaires.reduce(
     (result, value, index, array) => {
       if (index % 3 === 0) result.push(array.slice(index, index + 3));
@@ -48,15 +34,17 @@ const CommentairesCarousel = ({ commentaires }) => {
   );
 
   return (
-    <Carousel indicators={false}>
+    <Carousel autoplay>
       {groupeCommentaires.map((groupe, idx) => (
-        <Carousel.Item key={idx}>
-          <div className="d-flex justify-content-around">
+        <div key={idx}>
+          <Row gutter={16} className="justify-content-center">
             {groupe.map((commentaire) => (
-              <CommentaireCard key={commentaire.id} {...commentaire} />
+              <Col key={commentaire.id} xs={24} md={12} lg={8}>
+                <CommentaireCard {...commentaire} />
+              </Col>
             ))}
-          </div>
-        </Carousel.Item>
+          </Row>
+        </div>
       ))}
     </Carousel>
   );
@@ -71,7 +59,7 @@ const CommentairesClients = () => {
       note: 5,
       commentaire:
         "Je recommande fortement Franck qui est une personne très à l’écoute, patient et sympathique. Sa voiture est très bien entretenue, voir neuve .Quel plaisir d’avoir pu célébrer mon mariage avec votre voiture merci encore !Yoann",
-      image: "https://via.placeholder.com/150",
+      image: "",
     },
     {
       id: 2,
@@ -86,11 +74,10 @@ const CommentairesClients = () => {
     {
       id: 3,
       nom: "Gery Belletti",
-
       note: 5.0,
       commentaire:
         "Superbe expérience au volant de cette magnifique alpine, effet garanti.Très bon accueil de la part de Franck, je recommande grandement !",
-      image: "https://via.placeholder.com/150",
+      image: "",
     },
     {
       id: 4,
@@ -99,7 +86,7 @@ const CommentairesClients = () => {
       note: 5,
       commentaire:
         "Franck est très sympathique et arrangeant.La voiture est très belle, très bien entretenue. Comme neuve.Nous avons passé un très bon moment avec mon compagnon. Je recommande",
-      image: "https://via.placeholder.com/150",
+      image: "",
     },
     {
       id: 5,
@@ -108,7 +95,7 @@ const CommentairesClients = () => {
       note: 5,
       commentaire:
         "Expérience absolument parfaite. Franck est un propriétaire très sympathique qui nous a accueilli avec gentillesse et bienveillance.",
-      image: "https://via.placeholder.com/150",
+      image: "",
     },
     {
       id: 6,
@@ -117,16 +104,12 @@ const CommentairesClients = () => {
       note: 5,
       commentaire:
         "Un accueil personnalisé, des consignes claires, un véhicule magnifique et bichonné , j'ai passé 4 jours de vrai plaisir avec cette petite française qui n'a rien à envier à ces cousines allemandes!Merci beaucoup Franck et à bientôt!Philippe",
-      image: "https://via.placeholder.com/150",
+      image: "",
     },
   ];
 
   return (
-    <div className="container my-5 mt-5">
-      <h1 className=" display-3 fw-bold text-center my-2 mb-5">
-        Il nous font confiances ...
-      </h1>
-
+    <div className="container my-5">
       <CommentairesCarousel commentaires={commentaires} />
     </div>
   );

@@ -42,32 +42,34 @@ const offers = [
 
 const OfferCard = ({ offer }) => {
   const [showDetails, setShowDetails] = useState(false);
-  const [detailsMaxHeight, setDetailsMaxHeight] = useState("0px");
 
   const handleToggleDetails = () => {
     setShowDetails(!showDetails);
-    // Set a max-height for the transition effect. This value may need to be adjusted depending on your content
-    setDetailsMaxHeight(showDetails ? "0px" : `${offer.details.length * 56}px`);
   };
 
   return (
     <div className="col-md-3 mb-4">
-      <div className="card h-100 shadow">
+      <div className="card shadow">
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-center">
             <h5 className="card-title text-primary mb-0">{offer.title}</h5>
-            <i className="bi bi-info-circle-fill text-primary"></i>{" "}
-            {/* Change the icon as needed */}
+            <button
+              className="btn btn-link text-primary"
+              onClick={handleToggleDetails}
+            >
+              <i
+                className={`bi ${
+                  showDetails ? "bi-chevron-up" : "bi-chevron-down"
+                }`}
+              ></i>
+            </button>
           </div>
           <h6 className="card-subtitle mb-2 text-muted">{offer.price}</h6>
           <div
-            style={{
-              maxHeight: detailsMaxHeight,
-              overflow: "hidden",
-              transition: "max-height 0.5s ease",
-            }}
+            className={`collapse ${showDetails ? "show" : ""}`}
+            style={{ transition: "height 0.3s ease" }}
           >
-            <ul className="list-group list-group-flush mb-3">
+            <ul className="list-group list-group-flush">
               {offer.details.map((detail, index) => (
                 <li className="list-group-item" key={index}>
                   <i className="bi bi-check-lg text-success"></i> {detail}
@@ -75,12 +77,6 @@ const OfferCard = ({ offer }) => {
               ))}
             </ul>
           </div>
-          <button
-            className="btn btn-outline-primary btn-sm mb-2"
-            onClick={handleToggleDetails}
-          >
-            {showDetails ? "Cacher les détails" : "Afficher les détails"}
-          </button>
         </div>
       </div>
     </div>

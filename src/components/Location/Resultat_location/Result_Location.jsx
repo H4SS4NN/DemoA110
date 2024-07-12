@@ -55,13 +55,14 @@ const ResultatLocation = ({ deliveryInfo }) => {
                 <Col className="mb-3" xs={12}>
                   <DateDisplayComponent deliveryInfo={deliveryInfo} />
                 </Col>
+                <Col className="mb-3" xs={12}>
+                  <EstimationLoc deliveryInfo={deliveryInfo} />
+                </Col>
 
                 <Col xs={12}>
                   <StationCard deliveryInfo={deliveryInfo} />
                 </Col>
-                <Col xs={12}>
-                  <EstimationLoc deliveryInfo={deliveryInfo} />
-                </Col>
+              
               </Col>
 
               <Col xs={12} md={12} lg={8} className="mb-3">

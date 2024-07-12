@@ -1,5 +1,8 @@
 import React from "react";
 import { Button, Carousel } from "react-bootstrap";
+import srccar1 from "../../assets/04 1.jpg";
+import srccar2 from "../../assets/08 1.jpg";
+import srccar3 from "../../assets/294 1.jpg";
 
 const VoiturePresentation = () => {
   return (
@@ -18,26 +21,25 @@ const VoiturePresentation = () => {
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F02.2F15.2F355ca979-d7a1-4632-acf9-334b9c295f35.2Ejpeg/1200x630/quality/80/la-nouvelle-alpine-a110-va-t-elle-plaire-1273978.jpg" // Remplacez par le chemin de votre image
+                src={srccar1}
                 alt="Intérieur de voiture"
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F02.2F15.2F355ca979-d7a1-4632-acf9-334b9c295f35.2Ejpeg/1200x630/quality/80/la-nouvelle-alpine-a110-va-t-elle-plaire-1273978.jpg" // Remplacez par le chemin de votre image
+                src={srccar2}
                 alt="Intérieur de voiture"
               />
             </Carousel.Item>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src="https://cap.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcap.2F2018.2F02.2F15.2F355ca979-d7a1-4632-acf9-334b9c295f35.2Ejpeg/1200x630/quality/80/la-nouvelle-alpine-a110-va-t-elle-plaire-1273978.jpg" // Remplacez par le chemin de votre image
+                src={srccar3}
                 alt="Intérieur de voiture"
               />
             </Carousel.Item>
           </Carousel>
-          <Button className="m-3">Louer</Button>
         </div>
         <div className="col-md-6">
           <h2>ICÔNE DE STYLE</h2>
